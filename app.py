@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request
+import os
 
+from flask import Flask, render_template, request
 from database import Employee, db
 
 app = Flask(__name__)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ["CONNECTION_STRING"]
 
 db.init_app(app)
 
